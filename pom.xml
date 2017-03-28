@@ -167,6 +167,7 @@
 		</dependency>
 	</dependencies>
 	<build>
+	    <pluginManagement> 
 		<plugins>
 			<plugin>
 
@@ -188,7 +189,29 @@
 					</dependency>
 				</dependencies>
 			</plugin>
+			<plugin>
+                          		<groupId>org.apache.maven.plugins</groupId>
+                          		<artifactId>maven-checkstyle-plugin</artifactId>
+                          		<version>2.16</version>
+                          		<executions>
+                             			<execution>
+                               				<id>validate</id>
+                               				<phase>validate</phase>
+                               				<configuration>
+                                       				<configLocation>google_checks.xml</configLocation>
+                                       				<encoding>UTF-8</encoding>
+                                    					<consoleOutput>true</consoleOutput>
+                                    					<failsOnError>true</failsOnError>
+                                    					<linkXRef>false</linkXRef>
+                               				</configuration>
+                               				<goals>
+                                    					<goal>check</goal>
+                               				</goals>
+                             			</execution>
+                        			</executions>
+                      		</plugin>
 		</plugins>
+		</pluginManagement> 
 		<!-- 默认不支持将src/test/java下的配置文件拷到target/test-classes,添加testResources，则支持全部拷贝， 
 			Copy resources for the test source code to the test output directory. -->
 		<testResources>
@@ -199,7 +222,28 @@
 
 		<finalName>WeTest</finalName>
 	</build>
-
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.moji</groupId>
+                                                     <artifactId>findbugs-maven-plugin</artifactId>
+                                                     <version>3.0.1</version>
+                                                     <configuration>
+                                                     	<xmlOutput>true</xmlOutput>
+					<findbugsXmlOutput>true</findbugsXmlOutput>
+					<findbugsXmlWithMessagess>true</findbugsXmlWithMessagess>
+                                                     </configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+                                                     <artifactId>maven-checkstyle-plugin</artifactId>
+                                                     <version>2.16</version>
+                                                     <configuration>
+                                                     <configLocation>google_checks.xml</configLocation>
+                                                     </configuration>
+			</plugin>
+		</plugins>
+	</reporting>
 	<properties>
 		<maven.compiler.source>1.7</maven.compiler.source>
 		<maven.compiler.target>1.7</maven.compiler.target>

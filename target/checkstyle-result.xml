@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="6.2">
+<file name="/home/wan/git/WeTest/src/test/java/c3p0.properties">
+</file>
+<file name="/home/wan/git/WeTest/src/test/java/log4j.properties">
+</file>
+<file name="/home/wan/git/WeTest/src/test/java/global.properties">
+</file>
+</checkstyle>
